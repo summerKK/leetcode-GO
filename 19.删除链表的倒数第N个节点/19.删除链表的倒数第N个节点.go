@@ -1,9 +1,6 @@
 package leetcode
 
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
+import . "github.com/summerKK/leetcode-Go/utils"
 
 func removeNthFromEnd(head *ListNode, n int) *ListNode {
 	// 哨兵节点,用于返回链表的头
