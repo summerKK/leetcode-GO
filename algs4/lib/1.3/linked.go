@@ -39,6 +39,7 @@ func (l *Linked) Del() interface{} {
 	}
 	n := l.current
 	l.current = l.current.next
+	l.n--
 
 	return n.Val()
 }
@@ -57,4 +58,8 @@ func (l *Linked) Loop() <-chan interface{} {
 	}()
 
 	return c
+}
+
+func (l *Linked) Peek() interface{} {
+	return l.current.val
 }

@@ -79,6 +79,10 @@ func (f *FixedCapStack) next() interface{} {
 	return f.a[f.N]
 }
 
+func (f *FixedCapStack) isFull() bool {
+	return f.N == len(f.a)
+}
+
 type MyStack struct {
 	node *Linked
 }
@@ -106,4 +110,8 @@ func (m *MyStack) Size() int {
 
 func (m *MyStack) Loop() <-chan interface{} {
 	return m.node.Loop()
+}
+
+func (m *MyStack) Peek() interface{} {
+	return m.node.Peek()
 }

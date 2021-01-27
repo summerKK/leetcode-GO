@@ -17,3 +17,7 @@ func TestLinked_Add(t *testing.T) {
 		fmt.Printf("%v ", node.Val())
 	}
 }
+
+func TestLinked_Peek(t *testing.T) {
+
+}
