@@ -8,6 +8,7 @@ type Stack interface {
 	Pop() interface{}
 	IsEmpty() bool
 	Size() int
+	Loop() <-chan interface{}
 }
 
 type FixedCapStack struct {
@@ -76,4 +77,33 @@ func (f *FixedCapStack) Loop() <-chan interface{} {
 func (f *FixedCapStack) next() interface{} {
 	f.N--
 	return f.a[f.N]
+}
+
+type MyStack struct {
+	node *Linked
+}
+
+func (m *MyStack) Init(i int) {
+	m.node = &Linked{}
+	m.node.Init()
+}
+
+func (m *MyStack) Push(item interface{}) {
+	m.node.Add(item)
+}
+
+func (m *MyStack) Pop() interface{} {
+	return m.node.Del()
+}
+
+func (m *MyStack) IsEmpty() bool {
+	return m.node.Size() <= 0
+}
+
+func (m *MyStack) Size() int {
+	return m.node.Size()
+}
+
+func (m *MyStack) Loop() <-chan interface{} {
+	return m.node.Loop()
 }

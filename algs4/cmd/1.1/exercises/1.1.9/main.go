@@ -5,10 +5,10 @@ import (
 	"math/rand"
 )
 
-// 1.1.9 编写一段代码，将一个正整数 N 用二进制表示并转换为一个 String 类型的值 s。
+// 1.1.9 编写一段代码，将一个正整数 n 用二进制表示并转换为一个 String 类型的值 s。
 func main() {
 	N := rand.Intn(1<<31 - 1)
-	fmt.Printf("N:%d\n", N)
+	fmt.Printf("n:%d\n", N)
 	s := ""
 	// 100转换为二进制:
 	// 100/2=50....(余数为0);
