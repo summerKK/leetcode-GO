@@ -6,7 +6,15 @@ import (
 	lib "github.com/summerKK/leetcode-Go/algs4/lib/1.3"
 )
 
-// 下面这段代码对队列 q 进行了什么操作?
+/**
+1.3.6
+下面这段代码对队列 q 进行了什么操作?
+       Stack<String> stack = new Stack<String>();
+       while (!q.isEmpty())
+          stack.push(q.dequeue());
+       while (!stack.isEmpty())
+          q.enqueue(stack.pop());
+*/
 func main() {
 	S := &lib.MyStack{}
 	S.Init(0)
