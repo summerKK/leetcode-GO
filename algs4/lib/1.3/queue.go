@@ -58,3 +58,14 @@ func (m *MyQueue) IsEmpty() bool {
 func (m *MyQueue) Size() int {
 	return m.n
 }
+
+func (m *MyQueue) Loop() <-chan interface{} {
+	c := make(chan interface{})
+	go func() {
+		for v := m.first; v != nil; v = v.Next {
+			c <- v.Item
+		}
+		close(c)
+	}()
+	return c
+}

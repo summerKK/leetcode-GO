@@ -15,14 +15,21 @@ import (
 func main() {
 	//s1 := "( ( 1 + 2 ) * ( ( 3 - 4 ) * ( 5 - 6 ) ) )"
 	//s1 := "( 3 + 2 ) * ( 2 + 3 )"
+
+	// 2 3 * 2 1 - / 3 4 1 - * +
 	s1 := "( ( 2 * 3 ) / ( 2 - 1 ) ) + ( 3 * ( 4 - 1 ) )"
-	// s2 := "1 4 + 3 *  10 5 / +"
+	InfixToPostfix(s1)
+}
+
+func InfixToPostfix(s1 string) *lib.MyQueue {
 	collection := strings.Split(s1, " ")
 	stack0 := &lib.MyStack{}
 	stack0.Init(0)
+	result := &lib.MyQueue{}
+	result.Init()
 	for _, s := range collection {
 		if isDigital(s) {
-			fmt.Printf("%s ", s)
+			result.Enqueue(s)
 		} else {
 			if s == "(" {
 				stack0.Push(s)
@@ -30,7 +37,7 @@ func main() {
 			}
 			if s == ")" {
 				for v := stack0.Pop(); v != "("; v = stack0.Pop() {
-					fmt.Printf("%s ", v)
+					result.Enqueue(v)
 				}
 				continue
 			}
@@ -41,14 +48,22 @@ func main() {
 			if priority(s) >= priority(v) {
 				stack0.Push(s)
 			} else {
-				fmt.Printf("%s ", s)
+				result.Enqueue(s)
 			}
 		}
 	}
 
 	for s := range stack0.Loop() {
+		result.Enqueue(s)
+	}
+
+	fmt.Printf("%s 后缀表达式为:", s1)
+	for s := range result.Loop() {
 		fmt.Printf("%s ", s)
 	}
+	fmt.Println()
+
+	return result
 }
 
 func isDigital(s string) bool {
@@ -58,10 +73,6 @@ func isDigital(s string) bool {
 	}
 
 	return true
-}
-
-func isOperator(s string) bool {
-	return s == "+" || s == "-" || s == "*" || s == "/" || s == "(" || s == ")"
 }
 
 func priority(s string) int {
