@@ -35,22 +35,14 @@ func supplement(s string) {
 			opts.Push(s)
 		} else {
 			// 括号
-			if numbers.Size() >= 2 {
-				n0 := numbers.Pop()
-				n1 := numbers.Pop()
-				opt := opts.Pop()
-				dataStack.Push(fmt.Sprintf("( %s %s %s )", n1, opt, n0))
-			}
+			n0 := numbers.Pop()
+			n1 := numbers.Pop()
+			opt := opts.Pop()
+			numbers.Push(fmt.Sprintf("( %s %s %s )", n1, opt, n0))
 		}
 	}
 
-	for opt := opts.Pop(); opt != nil; opt = opts.Pop() {
-		data0 := dataStack.Pop()
-		data1 := dataStack.Pop()
-		dataStack.Push(fmt.Sprintf("( %s %s %s )", data1, opt, data0))
-	}
-
-	fmt.Println(dataStack.Pop())
+	fmt.Println(numbers.Pop())
 }
 
 func isDigital(s string) bool {
