@@ -32,7 +32,7 @@ func (l *Linked) Add(item interface{}) {
 	l.n++
 }
 
-//  先进先出
+//  先进后出
 func (l *Linked) Del() interface{} {
 	if l.Size() <= 0 {
 		return nil
