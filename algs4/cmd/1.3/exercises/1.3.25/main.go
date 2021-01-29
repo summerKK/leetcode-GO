@@ -28,8 +28,5 @@ func main() {
 
 	linkList0.InsertAfter(linkList1.First)
 
-	for v := range linkList0.Loop() {
-		fmt.Printf("%v ", v)
-	}
-	fmt.Println()
+	fmt.Println(linkList0)
 }

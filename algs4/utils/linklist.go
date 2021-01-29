@@ -1,5 +1,7 @@
 package utils
 
+import "fmt"
+
 // Node is a generic interface for all nodes in a utils
 type Node struct {
 	Item interface{}
@@ -106,7 +108,15 @@ func (l *LinkList) RemoveAfter(node *Node) {
 		return
 	}
 
+	// 计算删除的长度
+	c := 0
+	for v := node; v.Next != nil; v = v.Next {
+		c++
+	}
+
 	node.Next = nil
+
+	l.n -= c
 }
 
 func (l *LinkList) InsertAfter(node *Node) {
@@ -114,11 +124,33 @@ func (l *LinkList) InsertAfter(node *Node) {
 		return
 	}
 	tail := l.First
+	c := 0
 	for node := l.First; node != nil; node = node.Next {
 		tail = node
+		c++
 	}
 
 	tail.Next = node
+	l.n += c
+}
+
+// 删除跟item值一样的所有节点
+func (l *LinkList) Remove(item interface{}) {
+	var pre *Node = nil
+	for node := l.First; node != nil; node = node.Next {
+		if node.Item == item {
+			// 第一个元素就是要删除的节点
+			if pre == nil {
+				// 删除头节点
+				l.First = node.Next
+			} else {
+				pre.Next = node.Next
+			}
+			l.n--
+		} else {
+			pre = node
+		}
+	}
 }
 
 func (l *LinkList) Loop() <-chan interface{} {
@@ -131,4 +163,12 @@ func (l *LinkList) Loop() <-chan interface{} {
 	}()
 
 	return c
+}
+
+func (l *LinkList) String() string {
+	for v := range l.Loop() {
+		fmt.Printf("%v ", v)
+	}
+	fmt.Printf("len:%d", l.n)
+	return ""
 }

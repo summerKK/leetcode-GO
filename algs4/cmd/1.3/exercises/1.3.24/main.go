@@ -22,7 +22,5 @@ func main() {
 	// 3
 	linkList.RemoveAfter(linkList.First.Next)
 
-	for v := range linkList.Loop() {
-		fmt.Println(v)
-	}
+	fmt.Println(linkList)
 }
