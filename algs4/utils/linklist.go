@@ -56,6 +56,17 @@ func (l *LinkList) DeleteK(k int) (item interface{}) {
 	return nil
 }
 
+// 查找元素
+func (l *LinkList) Find(item interface{}) bool {
+	for node := l.First; node != nil; node = node.Next {
+		if node.Item == item {
+			return true
+		}
+	}
+
+	return false
+}
+
 // Size returns number of nodes in link list
 func (l *LinkList) Size() int {
 	return l.n
@@ -88,4 +99,36 @@ func (l *LinkList) StringSlice() (items []string) {
 		items = append(items, curr.Item.(string))
 	}
 	return
+}
+
+func (l *LinkList) RemoveAfter(node *Node) {
+	if node == nil {
+		return
+	}
+
+	node.Next = nil
+}
+
+func (l *LinkList) InsertAfter(node *Node) {
+	if node == nil {
+		return
+	}
+	tail := l.First
+	for node := l.First; node != nil; node = node.Next {
+		tail = node
+	}
+
+	tail.Next = node
+}
+
+func (l *LinkList) Loop() <-chan interface{} {
+	c := make(chan interface{})
+	go func() {
+		for node := l.First; node != nil; node = node.Next {
+			c <- node.Item
+		}
+		close(c)
+	}()
+
+	return c
 }
