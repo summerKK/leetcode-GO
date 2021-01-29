@@ -38,6 +38,24 @@ func (l *LinkList) Del() (item interface{}) {
 	return
 }
 
+// 删除第k个元素.并返回.如果不存在返回nil
+func (l *LinkList) DeleteK(k int) (item interface{}) {
+	c := 0
+	pre := l.First
+	for node := l.First; node != nil; node = node.Next {
+		c++
+		pre = node
+		if c+1 == k && pre.Next != nil {
+			item := pre.Next.Item
+			pre.Next = pre.Next.Next
+			l.n--
+			return item
+		}
+	}
+
+	return nil
+}
+
 // Size returns number of nodes in link list
 func (l *LinkList) Size() int {
 	return l.n

@@ -76,3 +76,20 @@ func TestMyStack_Peek(t *testing.T) {
 
 	assert.Equal(t, MS.Peek(), "is")
 }
+
+func TestMyStack_Copy(t *testing.T) {
+	input := "to be or not to be that is"
+	inputs := strings.Split(input, " ")
+	for _, s := range inputs {
+		MS.Push(s)
+	}
+
+	stack0 := &MyStack{}
+	stack0.Init(0)
+	MS.Copy(stack0)
+
+	for s := range stack0.Loop() {
+		fmt.Printf("%s ", s)
+	}
+	fmt.Println()
+}

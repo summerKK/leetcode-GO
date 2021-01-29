@@ -115,3 +115,9 @@ func (m *MyStack) Loop() <-chan interface{} {
 func (m *MyStack) Peek() interface{} {
 	return m.node.Peek()
 }
+
+func (m *MyStack) Copy(stack0 *MyStack) {
+	for s := range m.Loop() {
+		stack0.Push(s)
+	}
+}
