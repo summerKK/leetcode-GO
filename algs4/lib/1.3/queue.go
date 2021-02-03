@@ -1,6 +1,11 @@
 package lib
 
-import "github.com/summerKK/leetcode-Go/algs4/utils"
+import (
+	"bytes"
+	"fmt"
+
+	"github.com/summerKK/leetcode-Go/algs4/utils"
+)
 
 type Queue interface {
 	Init()
@@ -68,4 +73,14 @@ func (m *MyQueue) Loop() <-chan interface{} {
 		close(c)
 	}()
 	return c
+}
+
+func (m *MyQueue) String() string {
+	var buf bytes.Buffer
+	for v := range m.Loop() {
+		buf.WriteString(fmt.Sprintf("%v", v))
+		buf.WriteByte(' ')
+	}
+
+	return buf.String()
 }
