@@ -12,7 +12,7 @@ type Deque struct {
 }
 
 func NewDeque(cap int) *Deque {
-	if cap <= 1 {
+	if cap < 4 {
 		cap = 4
 	}
 
