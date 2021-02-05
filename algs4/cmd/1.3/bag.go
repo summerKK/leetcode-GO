@@ -1,4 +1,4 @@
-package lib
+package __3
 
 import "github.com/summerKK/leetcode-Go/algs4/utils"
 

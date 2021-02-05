@@ -5,8 +5,6 @@ import (
 	"math/rand"
 	"sort"
 	"time"
-
-	"github.com/summerKK/leetcode-Go/algs4/lib/1.1"
 )
 
 func main() {
@@ -22,7 +20,7 @@ func main() {
 	}
 	sort.Ints(arr)
 
-	search := lib.BinarySearch(key, arr)
+	search := BinarySearch(key, arr)
 	fmt.Println(arr)
 	fmt.Printf("key:%d index:%d\n", key, search)
 }

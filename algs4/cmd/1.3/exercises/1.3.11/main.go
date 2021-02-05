@@ -5,7 +5,7 @@ import (
 	"strconv"
 	"strings"
 
-	lib "github.com/summerKK/leetcode-Go/algs4/lib/1.3"
+	"github.com/summerKK/leetcode-Go/algs4/cmd/1.3"
 	"github.com/summerKK/leetcode-Go/algs4/utils"
 )
 
@@ -23,7 +23,7 @@ func main() {
 
 func EvaluatePostfix(s string) float64 {
 	collection := strings.Split(s, " ")
-	stack0 := &lib.MyStack{}
+	stack0 := &__3.MyStack{}
 	stack0.Init(0)
 	for _, s := range collection {
 		if isDigital(s) {

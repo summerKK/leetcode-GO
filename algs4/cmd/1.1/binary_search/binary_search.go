@@ -1,4 +1,4 @@
-package lib
+package main
 
 func BinarySearch(key int, arr []int) int {
 	lo := 0

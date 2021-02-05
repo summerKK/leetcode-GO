@@ -5,7 +5,7 @@ import (
 	"strconv"
 	"strings"
 
-	lib "github.com/summerKK/leetcode-Go/algs4/lib/1.3"
+	"github.com/summerKK/leetcode-Go/algs4/cmd/1.3"
 )
 
 /**
@@ -21,11 +21,11 @@ func main() {
 	InfixToPostfix(s1)
 }
 
-func InfixToPostfix(s1 string) *lib.MyQueue {
+func InfixToPostfix(s1 string) *__3.MyQueue {
 	collection := strings.Split(s1, " ")
-	stack0 := &lib.MyStack{}
+	stack0 := &__3.MyStack{}
 	stack0.Init(0)
-	result := &lib.MyQueue{}
+	result := &__3.MyQueue{}
 	result.Init()
 	for _, s := range collection {
 		if isDigital(s) {

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	lib "github.com/summerKK/leetcode-Go/algs4/lib/1.3"
+	"github.com/summerKK/leetcode-Go/algs4/cmd/1.3"
 )
 
 /**
@@ -15,7 +15,7 @@ import (
 func main() {
 	input := "it was - the best - of times - - - it was - the - -"
 	inputs := strings.Split(input, " ")
-	MS := &lib.MyStack{}
+	MS := &__3.MyStack{}
 	MS.Init(0)
 	for _, input := range inputs {
 		if input == "-" && !MS.IsEmpty() {

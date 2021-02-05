@@ -6,7 +6,7 @@ import (
 	"strings"
 
 	"github.com/fatih/color"
-	lib "github.com/summerKK/leetcode-Go/algs4/lib/1.3"
+	"github.com/summerKK/leetcode-Go/algs4/cmd/1.3"
 )
 
 var colo *color.Color
@@ -19,11 +19,11 @@ var colo *color.Color
 */
 func main() {
 	colo = color.New(color.FgYellow)
-	queue := &lib.MyQueue{}
+	queue := &__3.MyQueue{}
 	_ = dir("/Users/summer/Docker/go-summer/leetcode-Go", queue, -1)
 }
 
-func dir(path string, queue *lib.MyQueue, depth int) (err error) {
+func dir(path string, queue *__3.MyQueue, depth int) (err error) {
 	depth++
 	file, err := os.Open(path)
 	if err != nil {

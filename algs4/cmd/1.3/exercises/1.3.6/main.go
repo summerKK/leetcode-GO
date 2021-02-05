@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	lib "github.com/summerKK/leetcode-Go/algs4/lib/1.3"
+	"github.com/summerKK/leetcode-Go/algs4/cmd/1.3"
 )
 
 /**
@@ -16,9 +16,9 @@ import (
           q.enqueue(stack.pop());
 */
 func main() {
-	S := &lib.MyStack{}
+	S := &__3.MyStack{}
 	S.Init(0)
-	Q := &lib.MyQueue{}
+	Q := &__3.MyQueue{}
 	Q.Enqueue(1)
 	Q.Enqueue(2)
 	Q.Enqueue(3)

@@ -5,7 +5,7 @@ import (
 	"strconv"
 	"strings"
 
-	lib "github.com/summerKK/leetcode-Go/algs4/lib/1.3"
+	"github.com/summerKK/leetcode-Go/algs4/cmd/1.3"
 )
 
 /**
@@ -21,11 +21,11 @@ func main() {
 
 func supplement(s string) {
 	collection := strings.Split(s, " ")
-	numbers := &lib.MyStack{}
+	numbers := &__3.MyStack{}
 	numbers.Init(0)
-	opts := &lib.MyStack{}
+	opts := &__3.MyStack{}
 	opts.Init(0)
-	dataStack := lib.MyStack{}
+	dataStack := __3.MyStack{}
 	dataStack.Init(0)
 
 	for _, s := range collection {

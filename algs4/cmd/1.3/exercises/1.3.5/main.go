@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	lib "github.com/summerKK/leetcode-Go/algs4/lib/1.3"
+	"github.com/summerKK/leetcode-Go/algs4/cmd/1.3"
 )
 
 /**
@@ -19,7 +19,7 @@ import (
 */
 func main() {
 	N := 50
-	S := &lib.MyStack{}
+	S := &__3.MyStack{}
 	S.Init(0)
 	for N > 0 {
 		S.Push(N % 2)
