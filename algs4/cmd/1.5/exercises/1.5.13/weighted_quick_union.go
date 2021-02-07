@@ -1,4 +1,4 @@
-package lib
+package main
 
 type WeightedQuickUnion struct {
 	arr []int
@@ -46,10 +46,13 @@ func (qu *WeightedQuickUnion) Connected(p int, q int) bool {
 }
 
 func (qu *WeightedQuickUnion) Find(p int) int {
-	for p != qu.arr[p] {
-		p = qu.arr[p]
+	if qu.arr[p] == p {
+		return p
 	}
-	return p
+
+	qu.arr[p] = qu.Find(qu.arr[p])
+
+	return qu.arr[p]
 }
 
 func (qu *WeightedQuickUnion) Count() int {

@@ -34,15 +34,9 @@ func (qu *QuickUnion) Connected(p int, q int) bool {
 }
 
 func (qu *QuickUnion) Find(p int) int {
-	for {
-		index := qu.arr[p]
-		if index == p {
-			p = index
-			break
-		}
-		p = index
+	for p != qu.arr[p] {
+		p = qu.arr[p]
 	}
-
 	return p
 }
 
